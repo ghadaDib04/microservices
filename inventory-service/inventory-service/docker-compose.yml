@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0  # Use a more recent version
+    container_name: mysql2
+    environment:
+      MYSQL_ROOT_PASSWORD: root2004
+      MYSQL_DATABASE: inventory_service
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./mysql_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped  # Auto-restart on failure
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

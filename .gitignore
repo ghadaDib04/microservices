@@ -1,0 +1,15 @@
+# Ignore database runtime/data
+api-gateway/api-gateway/volume-data/
+inventory-service/inventory-service/docker/mysql/data/
+order-service/order-service/mysql/
+# Ignore build, temp, and OS files
+*.log
+*.tmp
+*.class
+*.jar
+*.war
+target/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
